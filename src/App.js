@@ -1,133 +1,60 @@
-import logo from './logo.svg';
+import {useState} from 'react';
 import './App.css';
 
-function App() {
-  var person = {
-    name: "Sara",
-    age: 33,
-    profession: "Developer"
-  }
-  var style = {
-    color: '#000',
-    backgroundColor: '#fff',
-    padding: '1rem 2rem',
-    borderRadius: '10px',
-    fontSize: '3rem',
-    profStyle:{
-      color:"red",
-      fontSize: "2.5rem",
-      padding: "1rem",
-      fontWeight: "bold",
-      boxShadow: "3px 2px 15px 0 #fff",
-      borderRadius: "10px",
-    }
-  }
+const App = () =>{
+  return(
+    <div>
+      <MovieCounter></MovieCounter>
+    </div>
+  );
+}
 
-  return (
+
+
+
+
+
+
+
+
+
+
+
+
+
+const MovieCounter = () => {
+  // const movies = useState(0);
+  // console.log(movies);
+  // const [x, y] = [10, 3];
+  // console.log(x, y);
+
+  const [count, setCount] = useState(0);
+
+  return(<div className="App">
+    <button className="btn" onClick={() => setCount(count + 1)}>Add Movie</button>
+    <h3>Number of movies: <span>{count}</span></h3>
+    <hr></hr>
+    <AnotherMovieComponent movies={count}></AnotherMovieComponent>
+    <AnotherMovieComponent movies={count + 10}></AnotherMovieComponent>
+    <AnotherMovieComponent movies={count + 5}></AnotherMovieComponent>
+    <AnotherMovieComponent movies={count + 3}></AnotherMovieComponent>
+    <AnotherMovieComponent movies={count + 1}></AnotherMovieComponent>
+  </div>);
+}
+
+
+
+const AnotherMovieComponent = (props) => {
+  console.log(props)
+  const {movies} = props;
+  return(
     <div className="App">
-      <header className="App-header">
-        <h3 style={style}>Name: {person.name}</h3>
-        <h3 style={{color: "yellowgreen",fontSize: "2rem",}}>Age: {person.name}</h3>
-        <h3 style={style.profStyle}>Profession: {person.profession}</h3>
-        
-        {5 + 5}
+      <h1>Another Component</h1>
+      <h3>Movies: {movies}</h3>
 
-        <Javascript></Javascript>
-        <React></React>
-        <Javascript></Javascript>
-        <React></React>
-        <Javascript></Javascript>
-        <React></React>
-        <Javascript></Javascript>
-        <React></React>
-        <Javascript></Javascript>
-        <React></React>
-        
-
-      </header>
-      
     </div>
   );
 }
 
-
-
-
-
-// component 
-function Javascript () {
-  const style = {
-    javascript: {
-      backgroundColor: "#fff",
-      width: "500px",
-      borderRadius: "10px",
-      boxShadow: "3px 2px 15px 0 #000",
-      margin: "1rem"
-
-    },
-    h3: {
-      backgroundColor: "#000",
-      color: "#fff",
-      fontSize: "2.5rem",
-      margin: "1rem",
-      borderRadius: "10px",
-      padding:".5rem"
-    },
-    p: {
-      backgroundColor: "#000",
-      color: "#fff",
-      fontSize: "2rem",
-      margin: "1rem",
-      borderRadius: "10px",
-      padding:".5rem"
-    }
-  }
-
-  return(
-    <div style={style.javascript}>
-      <h3 style={style.h3}>JavaScript</h3>
-      <p style={style.p}>"JavaScript is most popular programming language in the world"</p>
-    </div>
-  );
-}
-
-
-
-
-// component 
-function React () {
-  const style = {
-    react: {
-      backgroundColor: "#fff",
-      width: "500px",
-      borderRadius: "10px",
-      boxShadow: "3px 2px 15px 0 #000",
-      margin: "1rem"
-    },
-    h3: {
-      backgroundColor: "#000",
-      color: "cyan",
-      fontSize: "2.5rem",
-      margin: "1rem",
-      borderRadius: "10px",
-      padding:".5rem"
-    },
-    p: {
-      backgroundColor: "#000",
-      color: "#fff",
-      fontSize: "2rem",
-      margin: "1rem",
-      borderRadius: "10px",
-      padding:".5rem"
-    }
-  }
-
-  return(
-    <div style={style.react}>
-      <h3 style={style.h3}>React JS</h3>
-      <p style={style.p}>"React is a JavaScript Library for building user interface"</p>
-    </div>
-  );
-}
 
 export default App;
